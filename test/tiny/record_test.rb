@@ -1,0 +1,48 @@
+require "test_helper"
+
+class Tiny::RecordTest < Minitest::Test
+  def test_that_it_has_a_version_number
+    refute_nil ::Tiny::Record::VERSION
+  end
+
+  def test_fetch_record
+    record = User.create(first_name: "First", last_name: "last")
+    user = User.find(record.id)
+    assert_equal user.attributes, record.attributes
+    user = User.fetch(record.id)
+    assert_equal user.attributes, record.attributes
+    user = User.fetch(record.id, with: :first_name)
+    refute_equal user.attributes, record.attributes
+    assert_nil user.id
+    assert_equal "First", user.first_name
+    assert_raises ActiveRecord::RecordNotFound do
+      User.fetch(0)
+    end
+  end
+
+  def test_fetch_by_record
+    record = User.create(first_name: "First", last_name: "last")
+    user = User.find_by(first_name: "First")
+    assert_equal user.attributes, record.attributes
+    user = User.fetch_by(first_name: "First")
+    assert_equal user.attributes, record.attributes
+    user = User.fetch_by(first_name: "First", with: :first_name)
+    refute_equal user.attributes, record.attributes
+    assert_nil user.id
+    assert_equal "First", user.first_name
+    assert_nil User.fetch_by(first_name: "test user")
+  end
+
+  def test_tiny_columns
+    User.instance_eval do
+      tiny_columns :id, :first_name
+    end
+    record = User.create(first_name: "First", last_name: "last")
+    user = User.fetch(record.id)
+    assert_raises ActiveModel::MissingAttributeError do
+      user.last_name
+    end
+    assert_equal "First", user.first_name
+    assert_equal record.id, user.id
+  end
+end
