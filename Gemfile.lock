@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    tiny-record (0.1.0)
+    tiny-record (1.0.0)
 
 GEM
   remote: https://rubygems.org/
