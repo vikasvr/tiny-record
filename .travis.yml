@@ -4,4 +4,9 @@ language: ruby
 cache: bundler
 rvm:
   - 2.3.6
-before_install: gem install bundler -v 1.16.3
+before_install:
+  - mysql -e 'CREATE DATABASE IF NOT EXISTS memory;'
+  - gem install bundler -v 1.16.3
+services:
+  - mysql
+if: branch = master OR type = 'pull_request'
