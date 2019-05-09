@@ -4,8 +4,6 @@
 
 TinyRecord gives to you the capability to target columns when you try to look for active record objects specifying the columns you want to use which gives you speed. Logic is simple, less the data you will ask for, faster database response would be.
 
-
-
 ## Installation
 
 Add this line to your application's Gemfile:
@@ -41,6 +39,16 @@ Or install it yourself as:
   User.fetch_by(first_name: "John", with: [:id, :first_name])
 ```
   Just like rails find_by, it will return nil when record not found.
+
+  You can also set defaults by:
+```ruby
+  class User < ApplicationRecord
+    include TinyRecord
+    tiny_columns :id, :first_name
+  end
+```
+  Now whenever you use fetch or fetch by method record will be returned with these default columns.
+  You can override these defaults by specifying the columns.
 
 ## Contributing
 
