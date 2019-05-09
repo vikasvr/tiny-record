@@ -44,5 +44,10 @@ class Tiny::RecordTest < Minitest::Test
     end
     assert_equal "First", user.first_name
     assert_equal record.id, user.id
+    User.instance_eval do
+      tiny_columns
+    end
+    user = User.fetch(record.id)
+    assert_equal "last", user.last_name
   end
 end

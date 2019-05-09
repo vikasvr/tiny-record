@@ -12,7 +12,7 @@ module TinyRecord
     end
 
     def fetch(id, with: @@with_columns)
-      get({primary_key => id}, with).take!
+      get(primary_lookup(id), with).take!
     end
 
     def fetch_by(columns = {})
@@ -24,6 +24,10 @@ module TinyRecord
       collection = where(by_columns)
       collection = collection.select(with_columns) if with_columns.present?
       collection
+    end
+
+    def primary_lookup(lookup_id)
+      { primary_key => lookup_id }
     end
   end
 end
