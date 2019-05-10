@@ -2,6 +2,7 @@ PATH
   remote: .
   specs:
     tiny-record (1.0.0)
+      activerecord (>= 4.0)
 
 GEM
   remote: https://rubygems.org/

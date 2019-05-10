@@ -11,8 +11,9 @@ Gem::Specification.new do |spec|
 
   spec.summary       = %q{target columns when querying for active record objects}
   spec.description   = %q{Use the with options to target your columns you want in your active record collection}
-  spec.homepage      = ""
+  spec.homepage      = "https://rubygems.org/gems/tiny-record"
   spec.license       = "MIT"
+  spec.metadata    = { "source_code_uri" => "https://github.com/vikasvr/tiny-record" }
 
   # Prevent pushing this gem to RubyGems.org. To allow pushes either set the 'allowed_push_host'
   # to allow pushing to a single host or delete this section to allow pushing to any host.
@@ -37,4 +38,5 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency "minitest", "~> 5.0"
   spec.add_development_dependency "mysql2", '~> 0.4.0'
   spec.add_development_dependency "activerecord", "~> 4.0"
+  spec.add_runtime_dependency 'activerecord', '>= 4.0'
 end
