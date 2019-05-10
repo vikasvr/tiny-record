@@ -2,7 +2,7 @@
 
 # TinyRecord
 
-TinyRecord gives to you the capability to target columns when you try to look for active record objects specifying the columns you want to use which gives you speed. Logic is simple, less the data you will ask for, faster database response would be.
+TinyRecord gives to you the capability to target columns when you try to look for active record objects specifying the columns you want to use.
 
 ## Installation
 
