@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    tiny-record (1.0.0)
+    tiny-record (1.0.1)
       activerecord (>= 4.0)
 
 GEM
