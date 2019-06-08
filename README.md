@@ -1,4 +1,5 @@
 [![Build Status](https://travis-ci.com/vikasvr/tiny-record.svg?branch=master)](https://travis-ci.com/vikasvr/tiny-record)
+[![Gem Version](https://badge.fury.io/rb/tiny-record.svg)](https://badge.fury.io/rb/tiny-record)
 
 # TinyRecord
 
