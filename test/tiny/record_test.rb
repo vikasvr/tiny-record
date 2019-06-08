@@ -35,6 +35,18 @@ class Tiny::RecordTest < Minitest::Test
     assert_nil User.fetch_by(first_name: "test user")
   end
 
+  def test_fetch_where
+    User.create(first_name: "First", last_name: "last")
+    users = User.fetch_where(first_name: "First", with: :last_name)
+    assert_equal 2, users.count
+    users.each do |user|
+      assert_equal "last", user.last_name
+      assert_raises ActiveModel::MissingAttributeError do
+        user.first_name
+      end
+    end
+  end
+
   def test_tiny_columns
     User.instance_eval do
       tiny_columns :id, :first_name

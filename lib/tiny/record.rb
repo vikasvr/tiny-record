@@ -20,6 +20,11 @@ module TinyRecord
       get(columns, with).take
     end
 
+    def fetch_where(columns = {})
+      with = columns.delete(:with)
+      get(columns, with)
+    end
+
     def get(by_columns, with_columns)
       collection = where(by_columns)
       collection = collection.select(with_columns) if with_columns.present?
