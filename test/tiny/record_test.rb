@@ -4,7 +4,7 @@ class Tiny::RecordTest < Minitest::Test
   attr_accessor :record
 
   def setup
-    @record = User.first_or_create(first_name: "First", last_name: "last")
+    @record = User.create(first_name: "First", last_name: "last")
   end
 
   def test_that_it_has_a_version_number
@@ -37,9 +37,9 @@ class Tiny::RecordTest < Minitest::Test
 
   def test_fetch_where
     User.create(first_name: "First", last_name: "last")
-    users = User.fetch_where(first_name: "First", with: :last_name)
-    assert_equal 2, users.count
-    users.each do |user|
+    users_from_fetch = User.fetch_where(first_name: "First", with: :last_name)
+    assert_equal 2, users_from_fetch.count
+    users_from_fetch.each do |user|
       assert_equal "last", user.last_name
       assert_raises ActiveModel::MissingAttributeError do
         user.first_name
@@ -48,19 +48,15 @@ class Tiny::RecordTest < Minitest::Test
   end
 
   def test_tiny_columns
-    User.instance_eval do
-      tiny_columns :id, :first_name
-    end
-    user = User.fetch(record.id)
+    record = Admin.create(first_name: "new",last_name: "admin")
+    admin = Admin.fetch(record.id)
     assert_raises ActiveModel::MissingAttributeError do
-      user.last_name
+      admin.last_name
     end
-    assert_equal "First", user.first_name
-    assert_equal record.id, user.id
-    User.instance_eval do
-      tiny_columns
-    end
-    user = User.fetch(record.id)
-    assert_equal "last", user.last_name
+    assert_equal "new", admin.first_name
+  end
+
+  def after_teardown
+    User.destroy_all
   end
 end
