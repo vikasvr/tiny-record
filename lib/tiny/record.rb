@@ -6,7 +6,7 @@ module TinyRecord
   module ClassMethods
 
     def tiny_columns(*args)
-      @default_tiny_columns = *args if args.present?
+      @default_tiny_columns = *args
     end
 
     def fetch(id, with: nil)
