@@ -34,7 +34,7 @@ module TinyRecord
 
     def _retrieve_selective_columns(collection, requested_columns)
       target_columns = requested_columns && requested_columns.present? ? requested_columns : _default_tiny_columns
-      collection = collection.select(target_columns) if collection.present?
+      collection = collection.select(target_columns)
       collection
     end
 
