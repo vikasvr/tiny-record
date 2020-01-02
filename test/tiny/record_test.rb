@@ -1,5 +1,4 @@
 require "test_helper"
-
 class Tiny::RecordTest < Minitest::Test
   attr_accessor :record
 
@@ -54,6 +53,16 @@ class Tiny::RecordTest < Minitest::Test
       admin.last_name
     end
     assert_equal "new", admin.first_name
+  end
+
+  def test_where_using_string_query
+    users_from_fetch = User.fetch_where("first_name = 'First'")
+    assert_equal 1, users_from_fetch.length
+  end
+
+  def test_where_using_string_and_arguments
+    users_from_fetch = User.fetch_where("first_name = ?", 'First')
+    assert_equal 1, users_from_fetch.length
   end
 
   def after_teardown
