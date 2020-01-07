@@ -26,6 +26,8 @@ module TinyRecord
       end
     end
 
+    private
+
     def _get_records(by_columns, with_columns = nil)
       collection = where(by_columns)
       collection = _retrieve_selective_columns(collection,with_columns)
