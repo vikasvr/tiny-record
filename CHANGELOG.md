@@ -1,3 +1,9 @@
+## 1.1.4 - 2020-01-08
+* make internal methods private
+
+## 1.1.3 - 2020-01-02
+* Bug Fixes
+
 ## 1.1.2 - 2020-01-02
 
 ### Improvements
