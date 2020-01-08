@@ -3,7 +3,7 @@
 
 # TinyRecord
 
-TinyRecord gives to you the capability to target columns when you try to look for active record objects specifying the columns you want to use.
+TinyRecord gives you the capability to target columns when you try to look for active record objects specifying the columns you want to use.
 
 ## Installation
 
