@@ -51,6 +51,7 @@ module TinyRecord
     end
 
     def _default_tiny_columns
+      @default_tiny_columns ||= []
       @default_tiny_columns
     end
 
