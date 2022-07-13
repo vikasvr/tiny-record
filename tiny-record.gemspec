@@ -37,6 +37,6 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency "rake", "~> 13.0"
   spec.add_development_dependency "minitest", "~> 5.0"
   spec.add_development_dependency "mysql2", '~> 0.4.0'
-  spec.add_development_dependency "activerecord", "~> 4.0"
-  spec.add_runtime_dependency 'activerecord', '>= 4.0'
+  spec.add_development_dependency "activerecord", "~> 7.0"
+  spec.add_runtime_dependency 'activerecord', '~> 7.0'
 end
